@@ -3,20 +3,24 @@ package chapterthree;
 import java.util.Scanner;
 
 public class RockPaperScissors {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter choice (0 = Scissor, 1 = Rock, 2 = Paper): ");
         int choice = input.nextInt();
-        int compChoice = (int)(Math.random() * 3);
+
         String userString = switch (choice) {
+            case 0 -> "Scissors";
             case 1 -> "Rock";
             case 2 -> "Paper";
-            default -> "Scissor";
+            default -> throw new Exception(choice + " is not a valid value, read prompt");
         };
+
+        int compChoice = (int)(Math.random() * 3);
+
         String compString = switch (compChoice) {
             case 1 -> "Rock";
             case 2 -> "Paper";
-            default -> "Scissor";
+            default -> "Scissors";
         };
 
         String outcome = switch (choice) {
